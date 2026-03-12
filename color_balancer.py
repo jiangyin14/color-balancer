@@ -211,10 +211,7 @@ def main(argv: list | None = None) -> int:
             output_path=args.output,
             method=args.method,
         )
-    except FileNotFoundError as exc:
-        print(f"Error: {exc}", file=sys.stderr)
-        return 1
-    except (ValueError, Exception) as exc:  # noqa: BLE001
+    except (FileNotFoundError, ValueError, OSError, RuntimeError) as exc:
         print(f"Error: {exc}", file=sys.stderr)
         return 1
 
